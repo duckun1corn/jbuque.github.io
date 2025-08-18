@@ -24,10 +24,20 @@
     #hero p { margin:8px 0; }
     .hero-links a { display:inline-block; margin: 8px; padding:8px 12px; background: rgb(149,0,255); color:#fff; border-radius:6px; font-weight:bold; }
 
+    /* About Section */
+    #about { padding: 80px 20px; max-width:1000px; margin:0 auto; }
+    #about h2 { text-align:center; font-size:2rem; margin-bottom:30px; }
+    .about-card { background:#3b3b3b; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: background 0.3s; }
+    .about-card h3 { margin-bottom:10px; }
+    .about-card button { background: rgb(149,0,255); color:#fff; border:none; padding:6px 12px; margin-top:10px; border-radius:6px; cursor:pointer; }
+    .about-card button:hover { opacity:0.9; }
+    .about-more { display:none; margin-top:10px; font-size:0.95rem; line-height:1.4; }
+
     /* Light Theme */
     body.light-theme { background-color: #FFF8DC; color: #121212; }
     body.light-theme nav { background: rgba(255,255,240,0.95); border-bottom: 1px solid #a100ff; }
     body.light-theme nav a { color: #a100ff; }
+    body.light-theme .about-card { background:#f5e6cc; }
 
     /* Theme Toggle */
     #themeToggle { position:fixed; top:10px; right:20px; padding:12px 14px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; }
@@ -53,6 +63,38 @@
   </div>
 </section>
 
+<!-- About Section -->
+<section id="about">
+  <h2>About Me</h2>
+
+  <div class="about-card">
+    <h3>Early Exploration</h3>
+    <p>I started my journey with curiosity in technology...</p>
+    <button onclick="toggleAbout(this)">See More</button>
+    <div class="about-more">
+      <p>From tinkering with gadgets in childhood to writing my first lines of code, my passion for problem-solving and logical thinking has steadily grown. These experiences laid the foundation for my current pursuit of computer science and engineering.</p>
+    </div>
+  </div>
+
+  <div class="about-card">
+    <h3>High School Growth</h3>
+    <p>In high school, I explored robotics and coding clubs...</p>
+    <button onclick="toggleAbout(this)">See More</button>
+    <div class="about-more">
+      <p>Through leadership roles and team collaborations, I discovered how coding could bring ideas to life. Competitions and projects helped me grow both as a programmer and as a communicator, teaching me the importance of persistence and teamwork.</p>
+    </div>
+  </div>
+
+  <div class="about-card">
+    <h3>Future Aspirations</h3>
+    <p>I aim to pursue computer science and engineering...</p>
+    <button onclick="toggleAbout(this)">See More</button>
+    <div class="about-more">
+      <p>My ultimate goal is to contribute to technology that makes life more meaningful and efficient for people. Whether through artificial intelligence, robotics, or software engineering, I want to merge creativity with computation to design impactful solutions.</p>
+    </div>
+  </div>
+</section>
+
 <!-- Theme Switcher -->
 <button id="themeToggle">🌙</button>
 
@@ -63,6 +105,18 @@
     document.body.classList.toggle('light-theme');
     themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
   });
+
+  // Expandable About cards
+  function toggleAbout(btn) {
+    const more = btn.nextElementSibling;
+    if (more.style.display === "block") {
+      more.style.display = "none";
+      btn.textContent = "See More";
+    } else {
+      more.style.display = "block";
+      btn.textContent = "See Less";
+    }
+  }
 </script>
 
 </body>
