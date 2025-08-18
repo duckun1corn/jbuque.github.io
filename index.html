@@ -1,85 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jairus Buque | Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jairus Randy Buque Portfolio</title>
+<style>
+  /* Reset & basic styles */
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+  body { background-color: #121212; color: #f0f0f0; transition: background 0.3s, color 0.3s; }
+  a { color: #61dafb; text-decoration: none; }
+  h1,h2,h3 { margin-bottom: 10px; }
+  section { padding: 60px 20px; max-width: 1000px; margin: auto; }
 
-    header {
-      background: #333;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
+  /* Navigation Bar */
+  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
+  nav a { margin: 0 15px; font-weight:bold; cursor:pointer; }
 
-    nav a {
-      margin: 0 15px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  /* Hero Section */
+  #hero { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; }
+  #hero img { width:150px; height:150px; border-radius:50%; margin-bottom:20px; }
+  #hero .tagline { font-style:italic; margin:10px 0; animation: typing 3s steps(40, end) 1; white-space: nowrap; overflow: hidden; border-right: 3px solid #61dafb; }
 
-    section {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-      background-color: white;
-      margin-bottom: 20px;
-    }
+  @keyframes typing { from { width:0 } to { width:100% } }
 
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #333;
-      color: white;
-    }
-  </style>
+  /* Skills Section */
+  .skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+  .skill { background:#1e1e1e; padding:10px 15px; border-radius:8px; }
+
+  /* Projects Section */
+  #projects { overflow-x:auto; white-space: nowrap; padding-bottom:40px; }
+  .project-card { display:inline-block; background:#1e1e1e; width:250px; margin:10px; border-radius:10px; vertical-align:top; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
+  .project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
+  .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
+  .project-card .card-content { padding:10px; }
+  .project-card .see-more { margin-top:10px; display:block; color:#61dafb; text-align:right; cursor:pointer; font-weight:bold; }
+
+  /* Modal */
+  .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
+  .modal { background:#1e1e1e; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.3s, opacity 0.3s; }
+  .modal.show { transform: scale(1); opacity:1; }
+  .modal img { width:100%; border-radius:10px; margin-bottom:15px; }
+  .modal-close { float:right; cursor:pointer; font-weight:bold; color:#61dafb; }
+
+  /* Contact Form */
+  form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
+  input, textarea { padding:10px; border-radius:5px; border:none; }
+  button { padding:10px; border:none; border-radius:5px; background:#61dafb; color:#121212; font-weight:bold; cursor:pointer; }
+
+  /* Theme Switcher */
+  #themeToggle { position:fixed; bottom:20px; right:20px; padding:10px 15px; background:#61dafb; color:#121212; border:none; border-radius:8px; cursor:pointer; z-index:1002; }
+
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Jairus Buque</h1>
-    <p>Game Developer | Engineer | Creative Thinker</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<!-- Navigation -->
+<nav>
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm a web developer passionate about building clean and functional websites. I enjoy working with HTML, CSS, and JavaScript to create responsive designs.</p>
-  </section>
+<!-- Hero Section -->
+<section id="hero">
+  <img src="https://via.placeholder.com/150" alt="Profile Picture">
+  <h1>Jairus Randy Buque</h1>
+  <p>High School Senior | Aspiring CS & CE Student | Robotics & Programming Enthusiast</p>
+  <p class="tagline">Exploring the intersection of code, robotics, and creativity...</p>
+  <div>
+    <a href="https://github.com/duckun1corn" target="_blank">GitHub</a> | 
+    <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a> | 
+    <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank">Resume</a>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Portfolio Website:</strong> A personal portfolio built with HTML and CSS.</li>
-      <li><strong>To-Do App:</strong> A simple task tracker using JavaScript.</li>
-      <li><strong>Blog Template:</strong> A clean blog layout design.</li>
-    </ul>
-  </section>
+<!-- About Section -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>Since 5th grade, I’ve been pursuing and developing my practical programming skills. I started on an old laptop, learning game development in Unity, where I discovered both the fundamentals of programming and the importance of optimization. This drive continued through middle school, as I explored more advanced techniques and concepts.</p>
+  <p>In high school, taking CS classes and participating in extracurriculars like varsity robotics has further strengthened my skills. I’ve been particularly fascinated by understanding and reproducing natural phenomena through programming—both in virtual simulations and physical projects that integrate hardware and robotics principles.</p>
+  <p>Some of my favorite projects include designing a quadrupedal robot, constructing a fixed-wing drone, and developing a procedural language generator to explore new linguistic structures. I’m eager to grow my skills through internships, collaborative projects, and networking with professionals in technology and engineering, while continuing to explore creative ways to combine coding, robotics, and innovation.</p>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:jrqbuque@gmail.com">jrqbuque@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/duckun1corn" target="_blank">duckun1corn</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">Jairus Buque</a></p>
-    <p>Phone: <a target="_blank">847-769-3721</a></p>
-  </section
+<!-- Skills Section -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">C#</div>
+    <div class="skill">C++</div>
+    <div class="skill">Java</div>
+    <div class="skill">XAML</div>
+    <div class="skill">Unity</div>
+    <div class="skill">Arduino IDE</div>
+    <div class="skill">Visual Studio</div>
+    <div class="skill">Blender</div>
+    <div class="skill">Fusion360</div>
+    <div class="skill">Lightburn</div>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Jairus Buque. All rights reserved.</p>
-  </footer>
+<!-- Projects Section -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-card" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
+    <img src="https://via.placeholder.com/250x150" alt="Project 1">
+    <div class="card-content">
+      <h3>Project 1</h3>
+      <p>Short summary of project 1...</p>
+      <span class="see-more">See More ↓</span>
+    </div>
+  </div>
+
+  <div class="project-card" data-title="Project 2" data-description="Full description of Project 2" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
+    <img src="https://via.placeholder.com/250x150" alt="Project 2">
+    <div class="card-content">
+      <h3>Project 2</h3>
+      <p>Short summary of project 2...</p>
+      <span class="see-more">See More ↓</span>
+    </div>
+  </div>
+
+  <div class="project-card" data-title="Project 3" data-description="Full description of Project 3" data-tech="Blender, Fusion360" data-links="https://github.com/placeholder">
+    <img src="https://via.placeholder.com/250x150" alt="Project 3">
+    <div class="card-content">
+      <h3>Project 3</h3>
+      <p>Short summary of project 3...</p>
+      <span class="see-more">See More ↓</span>
+    </div>
+  </div>
+
+  <div class="project-card" data-title="Project 4" data-description="Full description of Project 4" data-tech="C++, Unity" data-links="https://github.com/placeholder">
+    <img src="https://via.placeholder.com/250x150" alt="Project 4">
+    <div class="card-content">
+      <h3>Project 4</h3>
+      <p>Short summary of project 4...</p>
+      <span class="see-more">See More ↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <span class="modal-close" id="modalClose">✖</span>
+    <img src="https://via.placeholder.com/600x300" id="modalImg" alt="Project Image">
+    <h3 id="modalTitle">Project Title</h3>
+    <p id="modalDesc">Full description here...</p>
+    <p><strong>Technologies:</strong> <span id="modalTech"></span></p>
+    <p><a href="#" id="modalLink" target="_blank">GitHub / Live Demo</a></p>
+  </div>
+</div>
+
+<!-- Experience Section -->
+<section id="experience">
+  <h2>Experience & Education</h2>
+  <h3>XPerience Internship</h3>
+  <p>June 2025 – July 2025</p>
+  <p>Helped run/advised summer STEM camps (Grades 1-8).</p>
+
+  <h3>Vernon Hills High School</h3>
+  <p>Aug 2022 – May 2026 | Weighted GPA: 4.574 | Unweighted: 4.0</p>
+  <p>Courses: AP CS Principles, AP CS A, Data Structures, AP Calculus BC, Calculus III</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form onsubmit="alert('This is a placeholder form.'); return false;">
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <div style="text-align:center; margin-top:20px;">
+    <p>📧 jrbuque07@gmail.com</p>
+    <p>🔗 <a href="https://github.com/duckun1corn" target="_blank">GitHub</a></p>
+    <p>🔗 <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a></p>
+    <p>📄 <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank">Resume</a></p>
+  </div>
+</section>
+
+<!-- Theme Switcher -->
+<button id="themeToggle">Toggle Theme</button>
+
+<script>
+  // Theme toggle
+  const themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', () => {
+    if(document.body.style.backgroundColor === 'white') {
+      document.body.style.backgroundColor = '#121212';
+      document.body.style.color = '#f0f0f0';
+    } else {
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+    }
+  });
+
+  // Modal functionality
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalTech = document.getElementById('modalTech');
+  const modalLink = document.getElementById('modalLink');
+  const modalClose = document.getElementById('modalClose');
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      modalOverlay.style.display = 'flex';
+      modal.classList.add('show');
+      modalImg.src = card.querySelector('img').src;
+      modalTitle.textContent = card.dataset.title;
+      modalDesc.textContent = card.dataset.description;
+      modalTech.textContent = card.dataset.tech;
+      modalLink.href = card.dataset.links;
+    });
+  });
+
+  modalClose.addEventListener('click', () => {
+    modal.classList.remove('show');
+    setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
+  });
+
+  modalOverlay.addEventListener('click', (e) => {
+    if(e.target === modalOverlay) {
+      modal.classList.remove('show');
+      setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
+    }
+  });
+</script>
 
 </body>
 </html>
