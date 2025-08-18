@@ -14,8 +14,8 @@
   section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
 
   /* Navigation Bar */
-  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255);}
-  nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s; }
+  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255); transition: background 0.3s, border-color 0.3s; }
+  nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s, color 0.3s; }
   nav a:hover { transform: scale(1.1); }
 
   /* Hero Section */
@@ -75,7 +75,8 @@
   body.light-theme section { background: #FFF8E7; }
   body.light-theme .skill, body.light-theme .project-card { background: #DCC6FF; }
   body.light-theme input, body.light-theme textarea { background: #FFF8E7; color:#121212; }
-
+  body.light-theme nav { background: rgba(255, 255, 240, 0.95); border-bottom: 1px solid #a100ff; }
+  body.light-theme nav a { color: #a100ff; }
 </style>
 </head>
 <body>
@@ -222,11 +223,7 @@
   const themeBtn = document.getElementById('themeToggle');
   themeBtn.addEventListener('click', () => {
     document.body.classList.toggle('light-theme');
-    if(document.body.classList.contains('light-theme')){
-      themeBtn.textContent = '☀️';
-    } else {
-      themeBtn.textContent = '🌙';
-    }
+    themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
   });
 
   // Modal functionality
