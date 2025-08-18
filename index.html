@@ -146,7 +146,7 @@
 <!-- Projects Section -->
 <section id="projects">
   <h2>Projects</h2>
-  <div style="display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:20px; padding:0 50px;">
+  <div id="projectsContainer" style="display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:20px; padding:0 50px; scroll-behavior: smooth;">
 
     <div class="project-card" style="margin-left:100px;" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
       <img src="https://via.placeholder.com/250x150" alt="Project 1">
@@ -195,6 +195,36 @@
 
   </div>
 </section>
+
+<style>
+  /* Custom horizontal scrollbar for projects */
+  #projectsContainer::-webkit-scrollbar {
+    height: 12px;
+  }
+  #projectsContainer::-webkit-scrollbar-track {
+    background: #2b2b2b;
+    border-radius: 6px;
+  }
+  #projectsContainer::-webkit-scrollbar-thumb {
+    background: rgb(149,0,255);
+    border-radius: 6px;
+  }
+  #projectsContainer::-webkit-scrollbar-thumb:hover {
+    background: #a100ff;
+  }
+</style>
+
+<script>
+  // Center Project 2 on page load
+  window.addEventListener('load', () => {
+    const container = document.getElementById('projectsContainer');
+    const project2 = container.children[1]; // Project 2 is the second child
+    const containerWidth = container.offsetWidth;
+    const project2Offset = project2.offsetLeft + project2.offsetWidth/2;
+    container.scrollLeft = project2Offset - containerWidth/2;
+  });
+</script>
+
 
 
 <!-- Modal Overlay -->
