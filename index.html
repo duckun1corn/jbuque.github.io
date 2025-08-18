@@ -6,127 +6,91 @@
 <title>Jairus Randy Buque Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ====== Reset & Base ====== */
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
-  html { scroll-behavior: smooth; }
-  body { background:#121212; color:#f0f0f0; transition: background 0.3s, color 0.3s; overflow-x:hidden; }
-  a { text-decoration:none; }
-  h1,h2,h3 { font-family:'Montserrat',sans-serif; margin-bottom:10px; }
-  section { padding:60px 20px; max-width:1000px; margin:auto; border-radius:10px; margin-bottom:30px; transition: background 0.3s, color 0.3s; }
+:root {
+  --accent-dark: linear-gradient(135deg, #b164ff, #ff80bf);
+  --accent-light: linear-gradient(135deg, #d6b3ff, #ffb3cc);
+  --dark-bg: #121212;
+  --dark-section: #1e1e1e;
+  --dark-text: #f0f0f0;
+  --light-bg: #FFFDD0;
+  --light-section: #fff0f5;
+  --light-text: #121212;
+  --skill-card-dark: #2a2a2a;
+  --skill-card-light: #ffe6f0;
+  --project-card-dark: #2a2a2a;
+  --project-card-light: #ffe6f0;
+}
 
-  /* ====== Gradient Accent ====== */
-  :root {
-    --accent-gradient: linear-gradient(135deg, #d470ff, #a55fff);
-    --accent-bg: #b55fff;
-  }
-  .gradient-text {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 20s linear infinite;
-    background-size: 400% 400%;
-  }
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
+body{background:var(--dark-bg);color:var(--dark-text);transition:0.3s;overflow-x:hidden;scroll-behavior:smooth;}
+a{text-decoration:none;cursor:pointer;}
+h1,h2,h3{font-family:'Montserrat',sans-serif;margin-bottom:10px;}
+section{padding:60px 20px;max-width:1000px;margin:auto;border-radius:10px;margin-bottom:30px;transition:0.3s;}
 
-  /* ====== Navigation ====== */
-  nav {
-    position: fixed;
-    top:0;
-    width:100%;
-    background: rgba(18,18,18,0.95);
-    display:flex;
-    justify-content:center;
-    padding:12px 0;
-    z-index:1000;
-    border-bottom:3px solid var(--accent-bg);
-    transition: background 0.3s, border-color 0.3s;
-  }
-  nav a { margin:0 20px; font-weight:400; color: var(--accent-bg); cursor:pointer; transition: transform 0.2s; }
-  nav a:hover { transform: scale(1.1); }
+nav{
+  position:fixed;top:0;width:100%;background:rgba(18,18,18,0.95);display:flex;justify-content:center;padding:10px 0;z-index:1000;
+  border-bottom:3px solid var(--accent-dark);
+}
+nav a{margin:0 15px;font-weight:bold;color:#b164ff;transition:transform 0.2s;}
+nav a:hover{transform:scale(1.1);}
 
-  /* ====== Hero Section ====== */
-  #hero { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; position:relative; }
-  #hero img { width:150px; height:150px; border-radius:50%; margin-bottom:20px; border:3px solid var(--accent-bg);}
-  #hero .tagline {
-    display:inline-block;
-    white-space: nowrap;
-    overflow:hidden;
-    position:relative;
-    animation: typing 3s steps(40,end) forwards;
-  }
-  #hero .tagline::after {
-    content:'';
-    position:absolute;
-    right:0;
-    width:3px;
-    height:1em;
-    background: var(--accent-bg);
-    animation: blink 0.7s steps(1) infinite;
-  }
-  #hero .tagline.done-typing::after { display:none; }
-  @keyframes typing { from { width:0 } to { width:100% } }
-  @keyframes blink { 50% { opacity:0; } 0%,100%{opacity:1;} }
+#themeToggle{
+  position:fixed;top:10px;right:20px;padding:12px 14px;background:var(--accent-dark);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:transform 0.2s,z-index 0.3s;z-index:1002;
+}
+#themeToggle:hover{transform:scale(1.1);}
 
-  #hero div a { margin: 0 10px; font-weight:400; color: var(--accent-bg); transition: color 0.3s; }
+#hero{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;position:relative;
+}
+#hero img{width:150px;height:150px;border-radius:50%;margin-bottom:20px;border:3px solid #b164ff;}
+#hero .tagline{
+  display:inline-block;white-space:nowrap;overflow:hidden;border-right:3px solid #b164ff;width:0;
+  animation:typing 3s steps(40,end) forwards;
+}
+.tagline.done-typing{border-right:none;}
+@keyframes typing{from{width:0;}to{width:100%;}}
 
-  /* ====== Skills Section ====== */
-  .skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-  .skill { background:#2a2a2a; padding:10px 15px; border-radius:8px; transition: background 0.3s; box-shadow:0 3px 6px rgba(0,0,0,0.3);}
-  .skill:hover { transform: scale(1.05); box-shadow:0 6px 12px rgba(0,0,0,0.5); }
+.hero-links a{margin:0 10px;color:#b164ff;font-weight:400;}
 
-  /* ====== Projects Section ====== */
-  #projects-section { padding-bottom:50px; }
-  #projects-title { text-align:center; margin-bottom:20px; font-size:2rem; }
-  #projects { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:20px; padding:10px 0; scrollbar-width:thin; scrollbar-color:var(--accent-bg) #1e1e1e; }
-  #projects::-webkit-scrollbar { height:8px; }
-  #projects::-webkit-scrollbar-thumb { background: var(--accent-bg); border-radius:4px; }
-  #projects::-webkit-scrollbar-track { background:#1e1e1e; }
-  .project-card { flex:0 0 300px; scroll-snap-align:center; background:#2a2a2a; border-radius:10px; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow:0 3px 6px rgba(0,0,0,0.3); }
-  .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
-  .project-card .card-content { padding:10px; }
-  .see-more { display:block; margin-top:10px; color: var(--accent-bg); cursor:pointer; font-weight:bold; }
+.about-box{
+  background:var(--dark-section);box-shadow:0 4px 12px rgba(0,0,0,0.3);padding:20px;margin-bottom:20px;border-radius:10px;transition:0.3s;
+}
 
-  /* ====== Modal ====== */
-  .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
-  .modal { background:#2a2a2a; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; position:relative; }
-  .modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: var(--accent-bg); font-size:20px; }
+.skills{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
+.skill{background:var(--skill-card-dark);padding:10px 15px;border-radius:8px;transition:0.3s;box-shadow:0 3px 6px rgba(0,0,0,0.3);}
+.skill:hover{transform:scale(1.05);box-shadow:0 6px 12px rgba(0,0,0,0.5);}
 
-  /* ====== Experience & Education ====== */
-  #experience { position:relative; }
-  .timeline { position:relative; margin-left:30px; }
-  .timeline::before { content:''; position:absolute; left:15px; top:0; width:3px; height:100%; background: var(--accent-bg); }
-  .timeline-item { position:relative; margin-bottom:40px; padding-left:40px; background:#2a2a2a; border-radius:10px; padding:15px; }
-  .timeline-item::before { content:''; position:absolute; left:5px; top:15px; width:20px; height:20px; background: var(--accent-bg); border-radius:50%; }
+#projects-section h2{text-align:center;margin-bottom:20px;}
+#projects{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:40px;gap:20px;}
+.project-card{flex:0 0 300px;background:var(--project-card-dark);border-radius:10px;scroll-snap-align:center;box-shadow:0 3px 6px rgba(0,0,0,0.3);transition:transform 0.3s;}
+.project-card img{width:100%;border-top-left-radius:10px;border-top-right-radius:10px;}
+.project-card .card-content{padding:10px;}
+.project-card .see-more{margin-top:10px;display:block;color:#b164ff;text-align:right;cursor:pointer;font-weight:bold;}
 
-  /* ====== Contact ====== */
-  #contact form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
-  #contact input, #contact textarea { padding:10px; border-radius:5px; border:none; background:#2a2a2a; color:#f0f0f0; transition: background 0.3s, color 0.3s; }
-  #contact button { padding:10px; border:none; border-radius:5px; background: var(--accent-bg); color:#fff; font-weight:bold; cursor:pointer; transition: transform 0.2s; }
-  #contact button:hover { transform: scale(1.05); }
-  #contact-links { text-align:center; margin-top:20px; }
-  #contact-links a { color: var(--accent-bg); margin:0 10px; font-weight:400; }
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(2px);justify-content:center;align-items:center;z-index:1001;}
+.modal{background:var(--dark-section);padding:20px;border-radius:10px;width:90%;max-width:600px;max-height:90%;overflow-y:auto;transform:scale(0.8);opacity:0;transition:0.5s;position:relative;}
+.modal.show{transform:scale(1);opacity:1;}
+.modal img{width:100%;border-radius:10px;margin-bottom:15px;}
+.modal-close{position:absolute;top:10px;right:15px;cursor:pointer;font-weight:bold;color:#b164ff;font-size:20px;}
 
-  /* ====== Theme Button ====== */
-  #themeToggle { position:fixed; top:15px; right:20px; width:45px; height:45px; background: var(--accent-bg); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:20px; z-index:1002; transition: transform 0.2s; }
-  #themeToggle:hover { transform: scale(1.1); }
+form{display:flex;flex-direction:column;gap:10px;max-width:500px;margin:auto;}
+input,textarea{padding:10px;border-radius:5px;border:none;transition:0.3s;}
+button{padding:10px;border:none;border-radius:5px;background:#b164ff;color:white;font-weight:bold;cursor:pointer;transition:0.2s;}
+button:hover{transform:scale(1.05);}
 
-  /* ====== Light Theme ====== */
-  body.light-theme { background:#fffaf5; color:#1e1e1e; }
-  body.light-theme section { background:#f9f0ff; }
-  body.light-theme .skill, body.light-theme .project-card { background:#d6c0ff; }
-  body.light-theme #contact input, body.light-theme #contact textarea { background:#fff; color:#1e1e1e; }
-  body.light-theme nav { background:#fff; border-bottom-color: #d470ff; }
-  body.light-theme .timeline::before, body.light-theme .timeline-item::before { background:#d470ff; }
+.experience-card{background:var(--dark-section);padding:20px;margin-bottom:20px;border-radius:10px;position:relative;transition:0.3s;}
+.experience-card:before{content:"";position:absolute;left:20px;top:0;bottom:0;width:4px;background:#b164ff;margin:auto;}
+
+.dot{width:12px;height:12px;background:#b164ff;border-radius:50%;position:absolute;left:14px;}
+
+::-webkit-scrollbar{height:8px;}
+::-webkit-scrollbar-thumb{background:#b164ff;border-radius:4px;}
+::-webkit-scrollbar-track{background:#333;}
 
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
   <a href="#hero">Home</a>
   <a href="#about">About</a>
@@ -136,37 +100,33 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- Theme Button -->
 <button id="themeToggle">🌓</button>
 
-<!-- Hero Section -->
 <section id="hero">
   <img src="https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png" alt="Profile Picture">
   <h1>Jairus Randy Buque</h1>
   <p>High School Senior | Aspiring CS & CE Student | Robotics & Programming Enthusiast</p>
   <p class="tagline">Exploring the intersection of code, robotics, and creativity...</p>
-  <div>
+  <div class="hero-links">
     <a href="https://github.com/duckun1corn" target="_blank">GitHub</a> | 
     <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a> | 
     <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank">Resumé</a>
   </div>
 </section>
 
-<!-- About Section -->
 <section id="about">
   <h2>About Me</h2>
   <div class="about-box">
-    <p>Since 5th grade, I’ve been pursuing and developing my practical programming skills. I started on an old laptop, learning game development in Unity, where I discovered both the fundamentals of programming and the importance of optimization. This drive continued through middle school, as I explored more advanced techniques and concepts.</p>
+    <p>Since 5th grade, I’ve been pursuing and developing my practical programming skills. I started on an old laptop, learning game development in Unity, where I discovered both the fundamentals of programming and the importance of optimization.</p>
   </div>
   <div class="about-box">
-    <p>In high school, taking CS classes and participating in extracurriculars like varsity robotics has further strengthened my skills. I’ve been particularly fascinated by understanding and reproducing natural phenomena through programming—both in virtual simulations and physical projects that integrate hardware and robotics principles.</p>
+    <p>This drive continued through middle school, as I explored more advanced techniques and concepts. In high school, taking CS classes and participating in extracurriculars like varsity robotics has further strengthened my skills.</p>
   </div>
   <div class="about-box">
-    <p>Some of my favorite projects include designing a quadrupedal robot, constructing a fixed-wing drone, and developing a procedural language generator to explore new linguistic structures. I’m eager to grow my skills through internships, collaborative projects, and networking with professionals in technology and engineering, while continuing to explore creative ways to combine coding, robotics, and innovation.</p>
+    <p>I’ve been particularly fascinated by understanding and reproducing natural phenomena through programming—both in virtual simulations and physical projects that integrate hardware and robotics principles. I’m eager to grow my skills through internships, collaborative projects, and networking with professionals in technology and engineering, while continuing to explore creative ways to combine coding, robotics, and innovation.</p>
   </div>
 </section>
 
-<!-- Skills Section -->
 <section id="skills">
   <h2>Skills</h2>
   <div class="skills">
@@ -183,9 +143,8 @@
   </div>
 </section>
 
-<!-- Projects Section -->
 <section id="projects-section">
-  <h2 id="projects-title">Projects</h2>
+  <h2>Projects</h2>
   <div id="projects">
     <div class="project-card" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
       <img src="https://via.placeholder.com/300x150" alt="Project 1">
@@ -222,41 +181,38 @@
   </div>
 </section>
 
-<!-- Experience Section -->
 <section id="experience">
   <h2>Experience & Education</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>XPerience Internship</h3>
-      <p>June 2025 – July 2025</p>
-      <p>Helped run/advised summer STEM camps (Grades 1-8).</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Vernon Hills High School</h3>
-      <p>Aug 2022 – May 2026 | Weighted GPA: 4.574 | Unweighted: 4.0</p>
-      <p>Courses: AP CS Principles, AP CS A, Data Structures, AP Calculus BC, Calculus III</p>
-    </div>
+  <div class="experience-card">
+    <div class="dot" style="top:20px;"></div>
+    <h3>XPerience Internship</h3>
+    <p>June 2025 – July 2025</p>
+    <p>Helped run/advised summer STEM camps (Grades 1-8).</p>
+  </div>
+  <div class="experience-card">
+    <div class="dot" style="top:20px;"></div>
+    <h3>Vernon Hills High School</h3>
+    <p>Aug 2022 – May 2026 | Weighted GPA: 4.574 | Unweighted: 4.0</p>
+    <p>Courses: AP CS Principles, AP CS A, Data Structures, AP Calculus BC, Calculus III</p>
   </div>
 </section>
 
-<!-- Contact Section -->
 <section id="contact">
   <h2>Contact Me</h2>
   <form onsubmit="alert('This is a placeholder form.'); return false;">
-    <input type="text" placeholder="Name" id="contactName" required>
-    <input type="email" placeholder="Email" id="contactEmail" required>
-    <textarea placeholder="Message" id="contactMsg" rows="5" required></textarea>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message" rows="5" required></textarea>
     <button type="submit">Send</button>
   </form>
-  <div id="contact-links">
-    <p><a href="mailto:jrbuque07@gmail.com">jrbuque07@gmail.com</a></p>
-    <p><a href="https://github.com/duckun1corn" target="_blank">GitHub</a></p>
-    <p><a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a></p>
-    <p><a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank">Resumé</a></p>
+  <div style="text-align:center;margin-top:20px;">
+    <p>jrbuque07@gmail.com</p>
+    <p><a href="https://github.com/duckun1corn" target="_blank" style="color:#b164ff;">GitHub</a></p>
+    <p><a href="https://www.linkedin.com/in/jairus-buque/" target="_blank" style="color:#b164ff;">LinkedIn</a></p>
+    <p><a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank" style="color:#b164ff;">Resumé</a></p>
   </div>
 </section>
 
-<!-- Modal Overlay -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modal">
     <span class="modal-close" id="modalClose">✖</span>
@@ -269,12 +225,47 @@
 </div>
 
 <script>
-/* ====== Typing Animation Cursor Hide ====== */
+// Typing cursor hide
 const tagline = document.querySelector('.tagline');
-tagline.addEventListener('animationend', () => { tagline.classList.add('done-typing'); });
+tagline.addEventListener('animationend', e=>{
+  if(e.animationName==='typing'){tagline.classList.add('done-typing');}
+});
 
-/* ====== Smooth Scroll Nav ====== */
+// Theme toggle
+const themeBtn = document.getElementById('themeToggle');
+let darkTheme = true;
+themeBtn.addEventListener('click', ()=>{
+  darkTheme=!darkTheme;
+  document.body.style.backgroundColor = darkTheme ? '#121212' : '#FFFDD0';
+  document.body.style.color = darkTheme ? '#f0f0f0' : '#121212';
+  document.querySelectorAll('section').forEach(s=>s.style.background = darkTheme?'#1e1e1e':'#fff0f5');
+  document.querySelectorAll('.skill').forEach(s=>s.style.background = darkTheme?'#2a2a2a':'#ffe6f0');
+  document.querySelectorAll('.project-card').forEach(p=>p.style.background = darkTheme?'#2a2a2a':'#ffe6f0');
+  document.querySelectorAll('input,textarea').forEach(i=>{i.style.background=darkTheme?'#1e1e1e':'#fff0f5';i.style.color=darkTheme?'#f0f0f0':'#121212';});
+  document.querySelectorAll('a').forEach(a=>{if(!a.closest('#projects'))a.style.color=darkTheme?'#b164ff':'#b164ff';});
+  document.querySelector('nav').style.borderBottom = darkTheme?'3px solid #b164ff':'3px solid #d6b3ff';
+});
+
+// Smooth scroll nav
 document.querySelectorAll('nav a').forEach(link=>{
   link.addEventListener('click', e=>{
     e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({behavior
+    document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// Modal functionality
+const modalOverlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalTech = document.getElementById('modalTech');
+const modalLink = document.getElementById('modalLink');
+const modalClose = document.getElementById('modalClose');
+
+document.querySelectorAll('.project-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    modalOverlay.style.display='flex';
+    modalImg.src = card.querySelector('img').src;
+    modalTitle.textContent=card.dataset.title;
