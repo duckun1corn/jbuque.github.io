@@ -6,77 +6,77 @@
 <title>Jairus Randy Buque Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Reset & basic styles */
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
-  body { background-color: #121212; color: #f0f0f0; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
-  a { text-decoration: none; }
-  h1,h2,h3 { margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
-  section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
+/* Reset & basic styles */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+body { background-color: #121212; color: #f0f0f0; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+a { text-decoration: none; }
+h1,h2,h3 { margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
+section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
 
-  /* Navigation Bar */
-  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 3px solid rgb(149,0,255); transition: background 0.3s; }
-  nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s; }
-  nav a:hover { transform: scale(1.1); }
+/* Navigation Bar */
+nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255); transition: background 0.3s; }
+nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s; }
+nav a:hover { transform: scale(1.1); }
 
-  /* Hero Section */
-  #hero { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; position:relative; }
-  #hero img { width:150px; height:150px; border-radius:50%; margin-bottom:20px; border:3px solid rgb(149,0,255);}
-  #hero .tagline { font-style:italic; margin:10px 0; animation: typing 3s steps(40, end) 1 forwards; white-space: nowrap; overflow: hidden; border-right: 3px solid rgb(149,0,255); }
-  @keyframes typing { from { width:0 } to { width:100%; } }
-  .hero-links a { display:inline-block; margin: 8px; padding:8px 12px; background: rgb(149,0,255); color:#fff; border-radius:6px; font-weight:bold; transition: transform 0.2s, background 0.3s; }
-  .hero-links a:hover { transform: scale(1.1); background: #a100ff; }
+/* Hero Section */
+#hero { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; position:relative; }
+#hero img { width:150px; height:150px; border-radius:50%; margin-bottom:20px; border:3px solid rgb(149,0,255);}
+#hero .tagline { font-style:italic; margin:10px 0; white-space: nowrap; overflow: hidden; border-right: 3px solid rgb(149,0,255); }
+@keyframes typing { from { width:0 } to { width:100%; } }
+.hero-links a { display:inline-block; margin: 8px; padding:8px 12px; background: rgb(149,0,255); color:#fff; border-radius:6px; font-weight:bold; transition: transform 0.2s, background 0.3s; }
+.hero-links a:hover { transform: scale(1.1); background: #a100ff; }
 
-  /* Skills Section */
-  .skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-  .skill { background:#f5f0e6; padding:10px 15px; border-radius:8px; transition: background 0.3s, color 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
-  .skill:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
+/* Skills Section */
+.skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+.skill { background:#f9f4e9; padding:10px 15px; border-radius:8px; transition: background 0.3s, color 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
+.skill:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
 
-  /* Projects Section */
-  #projects { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content: center; scroll-padding: 50px; }
-  .project-card { min-width: 300px; flex: 0 0 auto; background:#f5f0e6; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
-  .project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
-  .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
-  .project-card .card-content { padding:10px; }
-  .project-card .see-more { margin-top:10px; display:block; color: rgb(149,0,255); text-align:right; cursor:pointer; font-weight:bold; }
+/* Projects Section */
+#projects { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content: center; scroll-padding: 50px; }
+.project-card { min-width: 300px; flex: 0 0 auto; background:#f9f4e9; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
+.project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
+.project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
+.project-card .card-content { padding:10px; }
+.project-card .see-more { margin-top:10px; display:block; color: rgb(149,0,255); text-align:right; cursor:pointer; font-weight:bold; }
 
-  /* Modal */
-  .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
-  .modal { background:#f5f0e6; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s; position:relative; }
-  .modal.show { transform: scale(1); opacity:1; }
-  .modal img { width:100%; border-radius:10px; margin-bottom:15px; }
-  .modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: rgb(149,0,255); font-size:20px; }
+/* Modal */
+.modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
+.modal { background:#f9f4e9; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s; position:relative; color:#121212; }
+.modal.show { transform: scale(1); opacity:1; }
+.modal img { width:100%; border-radius:10px; margin-bottom:15px; }
+.modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: rgb(149,0,255); font-size:20px; }
 
-  /* About Section Cards */
-  .about-cards { display:flex; flex-direction:column; gap:20px; justify-content:center; }
-  .about-card { background:#f5f0e6; padding:20px; border-radius:10px; transition: transform 0.2s; position:relative; }
-  .about-card:hover { transform: scale(1.02); }
-  .about-card p.full { display:none; margin-top:10px; }
+/* About Section Cards */
+.about-cards { display:flex; flex-direction:column; gap:20px; justify-content:center; }
+.about-card { background:#f9f4e9; padding:20px; border-radius:10px; transition: transform 0.2s; }
+.about-card:hover { transform: scale(1.05); }
 
-  /* Contact Form */
-  form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
-  input, textarea { padding:10px; border-radius:5px; border:none; transition: background 0.3s, color 0.3s; }
-  button { padding:10px; border:none; border-radius:5px; background: rgb(149,0,255); color:#fff; font-weight:bold; cursor:pointer; transition: transform 0.2s; }
-  button:hover { transform: scale(1.05); }
+/* Contact Form */
+form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
+input, textarea { padding:10px; border-radius:5px; border:none; transition: background 0.3s, color 0.3s; }
+button { padding:10px; border:none; border-radius:5px; background: rgb(149,0,255); color:#fff; font-weight:bold; cursor:pointer; transition: transform 0.2s; }
+button:hover { transform: scale(1.05); }
 
-  /* Section Box Styling */
-  section { background: #1e1e1e; box-shadow: 0 4px 12px rgba(0,0,0,0.3); padding:40px; margin-bottom:40px; transition: background 0.3s, color 0.3s; }
-  section h2 { border-bottom: 2px solid rgb(149,0,255); padding-bottom:5px; margin-bottom:20px; }
+/* Section Box Styling */
+section { background: #1e1e1e; box-shadow: 0 4px 12px rgba(0,0,0,0.3); padding:40px; margin-bottom:40px; transition: background 0.3s, color 0.3s; }
+section h2 { border-bottom: 2px solid rgb(149,0,255); padding-bottom:5px; margin-bottom:20px; }
 
-  /* Timeline */
-  .timeline { display:flex; flex-direction:column; gap:20px; }
-  .timeline-item { border-left: 3px solid rgb(149,0,255); padding-left: 15px; position: relative; }
-  .timeline-item::before { content:''; position:absolute; left:-8px; top:10px; width:15px; height:15px; background: rgb(149,0,255); border-radius:50%; }
+/* Timeline */
+.timeline { display:flex; flex-direction:column; gap:20px; }
+.timeline-item { border-left: 3px solid rgb(149,0,255); padding-left: 15px; position: relative; background:#f9f4e9; padding:15px; border-radius:10px; }
+.timeline-item::before { content:''; position:absolute; left:-8px; top:10px; width:15px; height:15px; background: rgb(149,0,255); border-radius:50%; }
 
-  /* Theme Toggle */
-  #themeToggle { position:fixed; top:10px; right:20px; padding:12px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; transition: transform 0.2s; }
-  #themeToggle:hover { transform: scale(1.1); }
+/* Theme Toggle */
+#themeToggle { position:fixed; top:10px; right:20px; padding:12px 14px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; transition: transform 0.2s; }
+#themeToggle:hover { transform: scale(1.1); }
 
-  /* Light Theme */
-  body.light-theme { background-color: #FFFDD0; color: #121212; }
-  body.light-theme section { background: #FFF8E7; }
-  body.light-theme .skill, body.light-theme .project-card, body.light-theme .about-card, body.light-theme .modal { background: #F9F3E6; }
-  body.light-theme input, body.light-theme textarea { background: #FFF8E7; color:#121212; }
-  body.light-theme nav { background: rgba(255, 253, 208,0.95); }
+/* Light Theme */
+body.light-theme { background-color: #FFFDD0; color: #121212; }
+body.light-theme section { background: #FFF8E7; }
+body.light-theme nav { background: rgba(255, 248, 231, 0.95); }
+body.light-theme .skill, body.light-theme .project-card, body.light-theme .about-card, body.light-theme .timeline-item, body.light-theme .modal { background: #FDF1E6; color:#121212; }
+body.light-theme input, body.light-theme textarea { background: #FFF8E7; color:#121212; }
+
 </style>
 </head>
 <body>
@@ -96,7 +96,7 @@
   <img src="https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png" alt="Profile Picture">
   <h1>Jairus Randy Buque</h1>
   <p>High School Senior | Aspiring CS & CE Student | Robotics & Programming Enthusiast</p>
-  <p class="tagline">Exploring the intersection of code, robotics, and creativity...</p>
+  <p class="tagline" id="tagline">Exploring the intersection of code, robotics, and creativity...</p>
   <div class="hero-links">
     <a href="https://github.com/duckun1corn" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a>
@@ -110,21 +110,21 @@
   <div class="about-cards">
     <div class="about-card">
       <h3>Early Exploration</h3>
-      <p>Started coding in 5th grade, learning Unity and game development.</p>
-      <span class="see-more-about">See More ↓</span>
-      <p class="full">I experimented with different engines and game genres, building small games and learning the basics of programming logic, design, and problem-solving in a fun environment.</p>
+      <p class="short-text">Started coding in 5th grade, learning Unity and game development.</p>
+      <p class="full-text" style="display:none;">Started coding in 5th grade, learning Unity and game development. Explored small games, animations, and logic puzzles to enhance problem-solving skills from a young age.</p>
+      <span class="see-more" style="color: rgb(149,0,255); cursor:pointer;">See More ↓</span>
     </div>
     <div class="about-card">
       <h3>High School Growth</h3>
-      <p>Robotics, AP CS classes, and innovative projects fueled my curiosity.</p>
-      <span class="see-more-about">See More ↓</span>
-      <p class="full">Engaged in competitions, team projects, and self-driven learning in robotics and software development, enhancing my technical skills and collaboration experience.</p>
+      <p class="short-text">Robotics, AP CS classes, and innovative projects fueled my curiosity.</p>
+      <p class="full-text" style="display:none;">Robotics, AP CS classes, and innovative projects fueled my curiosity. Participated in multiple competitions and hackathons to expand practical skills and teamwork experience.</p>
+      <span class="see-more" style="color: rgb(149,0,255); cursor:pointer;">See More ↓</span>
     </div>
     <div class="about-card">
       <h3>Creative Projects</h3>
-      <p>Quadrupedal robots, drones, and procedural language generators.</p>
-      <span class="see-more-about">See More ↓</span>
-      <p class="full">I designed, programmed, and built several projects from scratch, integrating multiple disciplines such as mechanical design, electronics, and AI programming, highlighting my passion for applied technology.</p>
+      <p class="short-text">Quadrupedal robots, drones, and procedural language generators.</p>
+      <p class="full-text" style="display:none;">Quadrupedal robots, drones, and procedural language generators. Developed unique projects combining hardware and software, emphasizing innovation and problem-solving in real-world applications.</p>
+      <span class="see-more" style="color: rgb(149,0,255); cursor:pointer;">See More ↓</span>
     </div>
   </div>
 </section>
@@ -170,6 +170,14 @@
     <div class="card-content">
       <h3>Project 3</h3>
       <p>Short summary of project 3...</p>
+      <span class="see-more">See More ↓</span>
+    </div>
+  </div>
+  <div class="project-card" data-title="Project 4" data-description="Full description of Project 4" data-tech="Python, ML" data-links="https://github.com/placeholder">
+    <img src="https://via.placeholder.com/250x150" alt="Project 4">
+    <div class="card-content">
+      <h3>Project 4</h3>
+      <p>Short summary of project 4...</p>
       <span class="see-more">See More ↓</span>
     </div>
   </div>
@@ -225,29 +233,22 @@
 <button id="themeToggle">🌙</button>
 
 <script>
-  // Theme toggle
-  const themeBtn = document.getElementById('themeToggle');
-  themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
-  });
+// Theme toggle
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+  themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+});
 
-  // Modal functionality
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modalImg');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalTech = document.getElementById('modalTech');
-  const modalLink = document.getElementById('modalLink');
-  const modalClose = document.getElementById('modalClose');
+// Modal functionality
+const modalOverlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalTech = document.getElementById('modalTech');
+const modalLink = document.getElementById('modalLink');
+const modalClose = document.getElementById('modalClose');
 
-  document.querySelectorAll('.project-card .see-more').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const card = e.target.closest('.project-card');
-      modalOverlay.style.display = 'flex';
-      modalImg.src = card.querySelector('img').src;
-      modalTitle.textContent = card.dataset.title;
-      modalDesc.textContent = card.dataset.description;
-      modalTech.textContent = card.dataset.tech
+document.querySelectorAll('.project-card .see-more').forEach(btn => {
+  btn.addEvent
