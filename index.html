@@ -8,13 +8,13 @@
 <style>
   /* Reset & basic styles */
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
-  body { background-color: #2b2b2b; color: #f0f0f0; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+  body { background-color: #121212; color: #f0f0f0; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
   a { text-decoration: none; }
   h1,h2,h3 { margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
   section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
 
   /* Navigation Bar */
-  nav { position: fixed; top:0; width:100%; background: rgba(43,43,43,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255); transition: background 0.3s, border-color 0.3s; }
+  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255); transition: background 0.3s, border-color 0.3s; }
   nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s, color 0.3s; }
   nav a:hover { transform: scale(1.1); }
 
@@ -32,51 +32,20 @@
   .skill:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
 
   /* Projects Section */
-  #projects { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content: center; scroll-padding: 50px; }
+  #projects-section { margin-top:60px; }
+  #projects-section h2 { text-align:center; border-bottom: 2px solid rgb(149,0,255); padding-bottom:5px; margin-bottom:20px; }
+
+  #projects { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content:center; scroll-padding: 50px; }
+  #projects::-webkit-scrollbar { height:12px; }
+  #projects::-webkit-scrollbar-track { background:#2a2a2a; border-radius:6px; }
+  #projects::-webkit-scrollbar-thumb { background: rgb(149,0,255); border-radius:6px; }
+  #projects::-webkit-scrollbar-thumb:hover { background: #a100ff; }
+
   .project-card { min-width: 300px; flex: 0 0 auto; background:#1e1e1e; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
   .project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
   .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
   .project-card .card-content { padding:10px; }
   .project-card .see-more { margin-top:10px; display:block; color: rgb(149,0,255); text-align:right; cursor:pointer; font-weight:bold; }
-
-  /* Modal */
-  .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
-  .modal { background:#1e1e1e; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s; position:relative; }
-  .modal.show { transform: scale(1); opacity:1; }
-  .modal img { width:100%; border-radius:10px; margin-bottom:15px; }
-  .modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: rgb(149,0,255); font-size:20px; }
-
-  /* About Section Cards */
-  .about-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-  .about-card { background:#2a2a2a; padding:20px; border-radius:10px; flex:1 1 250px; transition: transform 0.2s; }
-  .about-card:hover { transform: scale(1.05); background:#3a3a3a; }
-
-  /* Contact Form */
-  form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
-  input, textarea { padding:10px; border-radius:5px; border:none; transition: background 0.3s, color 0.3s; }
-  button { padding:10px; border:none; border-radius:5px; background: rgb(149,0,255); color:#121212; font-weight:bold; cursor:pointer; transition: transform 0.2s; }
-  button:hover { transform: scale(1.05); }
-
-  /* Section Box Styling */
-  section { background: #1e1e1e; box-shadow: 0 4px 12px rgba(0,0,0,0.3); padding:40px; margin-bottom:40px; transition: background 0.3s, color 0.3s; }
-  section h2 { border-bottom: 2px solid rgb(149,0,255); padding-bottom:5px; margin-bottom:20px; }
-
-  /* Timeline */
-  .timeline { display:flex; flex-direction:column; gap:20px; }
-  .timeline-item { border-left: 3px solid rgb(149,0,255); padding-left: 15px; position: relative; }
-  .timeline-item::before { content:''; position:absolute; left:-8px; top:10px; width:15px; height:15px; background: rgb(149,0,255); border-radius:50%; }
-
-  /* Theme Toggle */
-  #themeToggle { position:fixed; top:10px; right:20px; padding:12px 14px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; transition: transform 0.2s; }
-  #themeToggle:hover { transform: scale(1.1); }
-
-  /* Light Theme */
-  body.light-theme { background-color: #FFFDD0; color: #121212; }
-  body.light-theme section { background: #FFF8E7; }
-  body.light-theme .skill, body.light-theme .project-card { background: #DCC6FF; }
-  body.light-theme input, body.light-theme textarea { background: #FFF8E7; color:#121212; }
-  body.light-theme nav { background: rgba(255, 255, 240, 0.95); border-bottom: 1px solid #a100ff; }
-  body.light-theme nav a { color: #a100ff; }
 </style>
 </head>
 <body>
@@ -86,7 +55,7 @@
   <a href="#hero">Home</a>
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
+  <a href="#projects-section">Projects</a>
   <a href="#experience">Experience</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -111,17 +80,17 @@
     <div class="about-card">
       <h3>Early Exploration</h3>
       <p>Since 5th grade, I’ve been pursuing and developing my practical programming skills. I started on an old laptop, learning game development in Unity, where I discovered both the fundamentals of programming and the importance of optimization. This drive continued through middle school, as I explored more advanced techniques and concepts.</p>
-      <span class="see-more" style="font-weight:bold; color:rgb(149,0,255); cursor:pointer;">See More ↓</span>
+      <span class="see-more">See More ↓</span>
     </div>
     <div class="about-card">
       <h3>High School Growth</h3>
       <p>In high school, taking CS classes and participating in extracurriculars like varsity robotics has further strengthened my skills. I’ve been particularly fascinated by understanding and reproducing natural phenomena through programming—both in virtual simulations and physical projects that integrate hardware and robotics principles.</p>
-      <span class="see-more" style="font-weight:bold; color:rgb(149,0,255); cursor:pointer;">See More ↓</span>
+      <span class="see-more">See More ↓</span>
     </div>
     <div class="about-card">
       <h3>Creative Projects</h3>
       <p>Some of my favorite projects include designing a quadrupedal robot, constructing a fixed-wing drone, and developing a procedural language generator to explore new linguistic structures. I’m eager to grow my skills through internships, collaborative projects, and networking with professionals in technology and engineering, while continuing to explore creative ways to combine coding, robotics, and innovation.</p>
-      <span class="see-more" style="font-weight:bold; color:rgb(149,0,255); cursor:pointer;">See More ↓</span>
+      <span class="see-more">See More ↓</span>
     </div>
   </div>
 </section>
@@ -144,30 +113,61 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects">
+<section id="projects-section">
   <h2>Projects</h2>
-  <div class="project-card" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 1">
-    <div class="card-content">
-      <h3>Project 1</h3>
-      <p>Short summary of project 1...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
+  <div id="projects">
+    <div class="project-card" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder"></div>
+    <div class="project-card" data-title="Project 2" data-description="Full description of Project 2" data-tech="Arduino, C++" data-links="https://github.com/placeholder"></div>
+    <div class="project-card" data-title="Project 3" data-description="Full description of Project 3" data-tech="Blender, Fusion360" data-links="https://github.com/placeholder"></div>
+    <div class="project-card" data-title="Project 4" data-description="Full description of Project 4" data-tech="C#, Unity" data-links="https://github.com/placeholder"></div>
+    <div class="project-card" data-title="Project 5" data-description="Full description of Project 5" data-tech="Arduino, C++" data-links="https://github.com/placeholder"></div>
   </div>
-  <div class="project-card" data-title="Project 2" data-description="Full description of Project 2" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 2">
-    <div class="card-content">
-      <h3>Project 2</h3>
-      <p>Short summary of project 2...</p>
-      <span class="see-more">See More ↓</span>
+</section>
+
+      <!-- Individual Project Cards Content -->
+    <div class="project-card" style="margin-left:80px;" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
+      <img src="https://via.placeholder.com/250x150" alt="Project 1">
+      <div class="card-content">
+        <h3>Project 1</h3>
+        <p>Short summary of project 1...</p>
+        <span class="see-more">See More ↓</span>
+      </div>
     </div>
-  </div>
-  <div class="project-card" data-title="Project 3" data-description="Full description of Project 3" data-tech="Blender, Fusion360" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 3">
-    <div class="card-content">
-      <h3>Project 3</h3>
-      <p>Short summary of project 3...</p>
-      <span class="see-more">See More ↓</span>
+
+    <div class="project-card" data-title="Project 2" data-description="Full description of Project 2" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
+      <img src="https://via.placeholder.com/250x150" alt="Project 2">
+      <div class="card-content">
+        <h3>Project 2</h3>
+        <p>Short summary of project 2...</p>
+        <span class="see-more">See More ↓</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-title="Project 3" data-description="Full description of Project 3" data-tech="Blender, Fusion360" data-links="https://github.com/placeholder">
+      <img src="https://via.placeholder.com/250x150" alt="Project 3">
+      <div class="card-content">
+        <h3>Project 3</h3>
+        <p>Short summary of project 3...</p>
+        <span class="see-more">See More ↓</span>
+      </div>
+    </div>
+
+    <div class="project-card" style="margin-right:80px;" data-title="Project 4" data-description="Full description of Project 4" data-tech="C#, Unity" data-links="https://github.com/placeholder">
+      <img src="https://via.placeholder.com/250x150" alt="Project 4">
+      <div class="card-content">
+        <h3>Project 4</h3>
+        <p>Short summary of project 4...</p>
+        <span class="see-more">See More ↓</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-title="Project 5" data-description="Full description of Project 5" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
+      <img src="https://via.placeholder.com/250x150" alt="Project 5">
+      <div class="card-content">
+        <h3>Project 5</h3>
+        <p>Short summary of project 5...</p>
+        <span class="see-more">See More ↓</span>
+      </div>
     </div>
   </div>
 </section>
@@ -229,7 +229,7 @@
     themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
   });
 
-  // Modal elements
+  // Modal functionality
   const modalOverlay = document.getElementById('modalOverlay');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
@@ -239,7 +239,6 @@
   const modalLink = document.getElementById('modalLink');
   const modalClose = document.getElementById('modalClose');
 
-// Project cards modal
   document.querySelectorAll('.project-card .see-more').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
@@ -250,14 +249,13 @@
       modalDesc.textContent = card.dataset.description;
       modalTech.textContent = card.dataset.tech;
       modalLink.href = card.dataset.links;
-      setTimeout(() => modal.classList.add('show'), 10);
+      setTimeout(()=> modal.classList.add('show'), 10);
     });
   });
 
-  // Close modal
   modalClose.addEventListener('click', () => {
     modal.classList.remove('show');
-    setTimeout(() => modalOverlay.style.display = 'none', 500);
+    setTimeout(()=> modalOverlay.style.display='none', 500);
   });
 
   // Hide typing cursor after animation
