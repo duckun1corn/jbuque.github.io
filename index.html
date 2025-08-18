@@ -8,7 +8,7 @@
 <style>
   /* Reset & basic styles */
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
-  body { background-color: #121212; color: #f0f0f0; transition: background 0.3s, color 0.3s; overflow-x:hidden; }
+  body { background-color: #121212; color: #f0f0f0; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
   a { text-decoration: none; }
   h1,h2,h3 { margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
   section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
@@ -21,10 +21,10 @@
   /* Hero Section */
   #hero { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; position:relative; }
   #hero img { width:150px; height:150px; border-radius:50%; margin-bottom:20px; border:3px solid rgb(149,0,255);}
-  #hero .tagline { font-style:italic; margin:10px 0; animation: typing 3s steps(40, end) 1; white-space: nowrap; overflow: hidden; border-right: 3px solid rgb(149,0,255); }
-  #hero div a { margin: 0 10px; color: rgb(149,0,255); font-weight:bold; }
-
-  @keyframes typing { from { width:0 } to { width:100% } }
+  #hero .tagline { font-style:italic; margin:10px 0; animation: typing 3s steps(40, end) 1 forwards; white-space: nowrap; overflow: hidden; border-right: 3px solid rgb(149,0,255); }
+  @keyframes typing { from { width:0 } to { width:100%; border-right-color: transparent; } }
+  .hero-links a { display:inline-block; margin: 8px; padding:8px 12px; background: rgb(149,0,255); color:#fff; border-radius:6px; font-weight:bold; transition: transform 0.2s, background 0.3s; }
+  .hero-links a:hover { transform: scale(1.1); background: #a100ff; }
 
   /* Skills Section */
   .skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
@@ -32,8 +32,8 @@
   .skill:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
 
   /* Projects Section */
-  #projects { overflow-x:auto; white-space: nowrap; padding-bottom:40px; scroll-snap-type: x mandatory; display:flex; }
-  .project-card { display:inline-block; background:#1e1e1e; width:250px; margin:10px; border-radius:10px; vertical-align:top; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; scroll-snap-align: start; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
+  #projects { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content: center; scroll-padding: 50px; }
+  .project-card { min-width: 300px; flex: 0 0 auto; background:#1e1e1e; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
   .project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
   .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
   .project-card .card-content { padding:10px; }
@@ -46,6 +46,11 @@
   .modal img { width:100%; border-radius:10px; margin-bottom:15px; }
   .modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: rgb(149,0,255); font-size:20px; }
 
+  /* About Section Cards */
+  .about-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+  .about-card { background:#2a2a2a; padding:20px; border-radius:10px; flex:1 1 250px; transition: transform 0.2s; }
+  .about-card:hover { transform: scale(1.05); background:#3a3a3a; }
+
   /* Contact Form */
   form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
   input, textarea { padding:10px; border-radius:5px; border:none; transition: background 0.3s, color 0.3s; }
@@ -56,9 +61,20 @@
   section { background: #1e1e1e; box-shadow: 0 4px 12px rgba(0,0,0,0.3); padding:40px; margin-bottom:40px; transition: background 0.3s, color 0.3s; }
   section h2 { border-bottom: 2px solid rgb(149,0,255); padding-bottom:5px; margin-bottom:20px; }
 
+  /* Timeline */
+  .timeline { display:flex; flex-direction:column; gap:20px; }
+  .timeline-item { border-left: 3px solid rgb(149,0,255); padding-left: 15px; position: relative; }
+  .timeline-item::before { content:''; position:absolute; left:-8px; top:10px; width:15px; height:15px; background: rgb(149,0,255); border-radius:50%; }
+
   /* Theme Toggle */
   #themeToggle { position:fixed; bottom:20px; right:20px; padding:12px 14px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; transition: transform 0.2s; }
   #themeToggle:hover { transform: scale(1.1); }
+
+  /* Light Theme */
+  body.light-theme { background-color: #FFFDD0; color: #121212; }
+  body.light-theme section { background: #FFF8E7; }
+  body.light-theme .skill, body.light-theme .project-card { background: #E6D6FF; }
+  body.light-theme input, body.light-theme textarea { background: #FFF8E7; color:#121212; }
 </style>
 </head>
 <body>
@@ -79,19 +95,30 @@
   <h1>Jairus Randy Buque</h1>
   <p>High School Senior | Aspiring CS & CE Student | Robotics & Programming Enthusiast</p>
   <p class="tagline">Exploring the intersection of code, robotics, and creativity...</p>
-  <div>
-    <a href="https://github.com/duckun1corn" target="_blank">GitHub</a> | 
-    <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a> | 
-    <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank">Resume</a>
+  <div class="hero-links">
+    <a href="https://github.com/duckun1corn" target="_blank">🐱 GitHub</a>
+    <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">🔗 LinkedIn</a>
+    <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit" target="_blank">📄 Resume</a>
   </div>
 </section>
 
 <!-- About Section -->
 <section id="about">
   <h2>About Me</h2>
-  <p>Since 5th grade, I’ve been pursuing and developing my practical programming skills. I started on an old laptop, learning game development in Unity, where I discovered both the fundamentals of programming and the importance of optimization. This drive continued through middle school, as I explored more advanced techniques and concepts.</p>
-  <p>In high school, taking CS classes and participating in extracurriculars like varsity robotics has further strengthened my skills. I’ve been particularly fascinated by understanding and reproducing natural phenomena through programming—both in virtual simulations and physical projects that integrate hardware and robotics principles.</p>
-  <p>Some of my favorite projects include designing a quadrupedal robot, constructing a fixed-wing drone, and developing a procedural language generator to explore new linguistic structures. I’m eager to grow my skills through internships, collaborative projects, and networking with professionals in technology and engineering, while continuing to explore creative ways to combine coding, robotics, and innovation.</p>
+  <div class="about-cards">
+    <div class="about-card">
+      <h3>Early Exploration</h3>
+      <p>Started coding in 5th grade, learning Unity and game development.</p>
+    </div>
+    <div class="about-card">
+      <h3>High School Growth</h3>
+      <p>Robotics, AP CS classes, and innovative projects fueled my curiosity.</p>
+    </div>
+    <div class="about-card">
+      <h3>Creative Projects</h3>
+      <p>Quadrupedal robots, drones, and procedural language generators.</p>
+    </div>
+  </div>
 </section>
 
 <!-- Skills Section -->
@@ -138,14 +165,6 @@
       <span class="see-more">See More ↓</span>
     </div>
   </div>
-  <div class="project-card" data-title="Project 4" data-description="Full description of Project 4" data-tech="C++, Unity" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 4">
-    <div class="card-content">
-      <h3>Project 4</h3>
-      <p>Short summary of project 4...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-  </div>
 </section>
 
 <!-- Modal Overlay -->
@@ -163,12 +182,18 @@
 <!-- Experience Section -->
 <section id="experience">
   <h2>Experience & Education</h2>
-  <h3>XPerience Internship</h3>
-  <p>June 2025 – July 2025</p>
-  <p>Helped run/advised summer STEM camps (Grades 1-8).</p>
-  <h3>Vernon Hills High School</h3>
-  <p>Aug 2022 – May 2026 | Weighted GPA: 4.574 | Unweighted: 4.0</p>
-  <p>Courses: AP CS Principles, AP CS A, Data Structures, AP Calculus BC, Calculus III</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>XPerience Internship</h3>
+      <span>June 2025 – July 2025</span>
+      <p>Helped run and advise summer STEM camps (Grades 1-8).</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Vernon Hills High School</h3>
+      <span>Aug 2022 – May 2026 | Weighted GPA: 4.574 | Unweighted GPA: 4.0</span>
+      <p>Courses: AP CS Principles, AP CS A, Data Structures, AP Calculus BC, Calculus III</p>
+    </div>
+  </div>
 </section>
 
 <!-- Contact Section -->
@@ -184,7 +209,7 @@
     <p>📧 jrbuque07@gmail.com</p>
     <p>🔗 <a href="https://github.com/duckun1corn" target="_blank">GitHub</a></p>
     <p>🔗 <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a></p>
-    <p>📄 <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit?usp=sharing" target="_blank">Resume</a></p>
+    <p>📄 <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit" target="_blank">Resume</a></p>
   </div>
 </section>
 
@@ -194,31 +219,12 @@
 <script>
   // Theme toggle
   const themeBtn = document.getElementById('themeToggle');
-  let darkTheme = true;
   themeBtn.addEventListener('click', () => {
-    darkTheme = !darkTheme;
-    if(darkTheme){
-      document.body.style.backgroundColor = '#121212';
-      document.body.style.color = '#f0f0f0';
-      themeBtn.textContent = '🌙';
-      document.querySelectorAll('section').forEach(s => s.style.background = '#1e1e1e');
-      document.querySelectorAll('.skill').forEach(s => s.style.background='#1e1e1e');  
-      document.querySelectorAll('.project-card').forEach(p => p.style.background='#1e1e1e');
-      document.querySelectorAll('input, textarea').forEach(i=>i.style.background='#1e1e1e'); 
-      document.querySelectorAll('input, textarea').forEach(i=>i.style.color='#f0f0f0');
-    } else {
-      document.body.style.backgroundColor = '#FFFDD0';
-      document.body.style.color = '#121212';
-      themeBtn.textContent = '☀️';
-      document.querySelectorAll('section').forEach(s => s.style.background = '#FFF8E7');
-      document.querySelectorAll('.skill').forEach(s => s.style.background='#E6D6FF');  
-      document.querySelectorAll('.project-card').forEach(p => p.style.background='#E6D6FF');
-      document.querySelectorAll('input, textarea').forEach(i=>i.style.background='#FFF8E7'); 
-      document.querySelectorAll('input, textarea').forEach(i=>i.style.color='#121212');
-    }
+    document.body.classList.toggle('light-theme');
+    themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
   });
 
-  // Modal functionality with animated popout
+  // Modal functionality
   const modalOverlay = document.getElementById('modalOverlay');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
@@ -228,21 +234,24 @@
   const modalLink = document.getElementById('modalLink');
   const modalClose = document.getElementById('modalClose');
 
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      // Get card position for animation
-      const rect = card.getBoundingClientRect();
+  document.querySelectorAll('.project-card .see-more').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const card = e.target.closest('.project-card');
       modalOverlay.style.display = 'flex';
-      modal.style.transition = 'none';
-      modal.style.transform = `translate(${rect.left}px, ${rect.top}px) scale(1)`; 
-      modal.style.opacity = '0';
-      setTimeout(()=>{
-        modal.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s';
-        modal.style.transform = 'translate(0px,0px) scale(1)';
-        modal.style.opacity = '1';
-      },10);
       modalImg.src = card.querySelector('img').src;
       modalTitle.textContent = card.dataset.title;
       modalDesc.textContent = card.dataset.description;
       modalTech.textContent = card.dataset.tech;
-     
+      modalLink.href = card.dataset.links;
+      setTimeout(()=> modal.classList.add('show'), 10);
+    });
+  });
+
+  modalClose.addEventListener('click', () => {
+    modal.classList.remove('show');
+    setTimeout(()=> modalOverlay.style.display='none', 500);
+  });
+</script>
+</body>
+</html>
