@@ -14,26 +14,26 @@
   section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
 
   /* Navigation Bar */
-  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255); transition: background 0.3s, border-color 0.3s; }
-  nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s, color 0.3s; }
+  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 3px solid rgb(149,0,255); transition: background 0.3s; }
+  nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s; }
   nav a:hover { transform: scale(1.1); }
 
   /* Hero Section */
   #hero { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; position:relative; }
   #hero img { width:150px; height:150px; border-radius:50%; margin-bottom:20px; border:3px solid rgb(149,0,255);}
   #hero .tagline { font-style:italic; margin:10px 0; animation: typing 3s steps(40, end) 1 forwards; white-space: nowrap; overflow: hidden; border-right: 3px solid rgb(149,0,255); }
-  @keyframes typing { from { width:0 } to { width:100%; border-right-color: transparent; } }
+  @keyframes typing { from { width:0 } to { width:100%; } }
   .hero-links a { display:inline-block; margin: 8px; padding:8px 12px; background: rgb(149,0,255); color:#fff; border-radius:6px; font-weight:bold; transition: transform 0.2s, background 0.3s; }
   .hero-links a:hover { transform: scale(1.1); background: #a100ff; }
 
   /* Skills Section */
   .skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-  .skill { background:#1e1e1e; padding:10px 15px; border-radius:8px; transition: background 0.3s, color 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
+  .skill { background:#f5f0e6; padding:10px 15px; border-radius:8px; transition: background 0.3s, color 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
   .skill:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
 
   /* Projects Section */
   #projects { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content: center; scroll-padding: 50px; }
-  .project-card { min-width: 300px; flex: 0 0 auto; background:#1e1e1e; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
+  .project-card { min-width: 300px; flex: 0 0 auto; background:#f5f0e6; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
   .project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
   .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
   .project-card .card-content { padding:10px; }
@@ -41,20 +41,21 @@
 
   /* Modal */
   .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
-  .modal { background:#1e1e1e; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s; position:relative; }
+  .modal { background:#f5f0e6; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s; position:relative; }
   .modal.show { transform: scale(1); opacity:1; }
   .modal img { width:100%; border-radius:10px; margin-bottom:15px; }
   .modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: rgb(149,0,255); font-size:20px; }
 
   /* About Section Cards */
-  .about-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-  .about-card { background:#2a2a2a; padding:20px; border-radius:10px; flex:1 1 250px; transition: transform 0.2s; }
-  .about-card:hover { transform: scale(1.05); background:#3a3a3a; }
+  .about-cards { display:flex; flex-direction:column; gap:20px; justify-content:center; }
+  .about-card { background:#f5f0e6; padding:20px; border-radius:10px; transition: transform 0.2s; position:relative; }
+  .about-card:hover { transform: scale(1.02); }
+  .about-card p.full { display:none; margin-top:10px; }
 
   /* Contact Form */
   form { display:flex; flex-direction:column; gap:10px; max-width:500px; margin:auto; }
   input, textarea { padding:10px; border-radius:5px; border:none; transition: background 0.3s, color 0.3s; }
-  button { padding:10px; border:none; border-radius:5px; background: rgb(149,0,255); color:#121212; font-weight:bold; cursor:pointer; transition: transform 0.2s; }
+  button { padding:10px; border:none; border-radius:5px; background: rgb(149,0,255); color:#fff; font-weight:bold; cursor:pointer; transition: transform 0.2s; }
   button:hover { transform: scale(1.05); }
 
   /* Section Box Styling */
@@ -67,16 +68,15 @@
   .timeline-item::before { content:''; position:absolute; left:-8px; top:10px; width:15px; height:15px; background: rgb(149,0,255); border-radius:50%; }
 
   /* Theme Toggle */
-  #themeToggle { position:fixed; top:10px; right:20px; padding:12px 14px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; transition: transform 0.2s; }
+  #themeToggle { position:fixed; top:10px; right:20px; padding:12px; background: rgb(149,0,255); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:20px; z-index:1002; transition: transform 0.2s; }
   #themeToggle:hover { transform: scale(1.1); }
 
   /* Light Theme */
   body.light-theme { background-color: #FFFDD0; color: #121212; }
   body.light-theme section { background: #FFF8E7; }
-  body.light-theme .skill, body.light-theme .project-card { background: #DCC6FF; }
+  body.light-theme .skill, body.light-theme .project-card, body.light-theme .about-card, body.light-theme .modal { background: #F9F3E6; }
   body.light-theme input, body.light-theme textarea { background: #FFF8E7; color:#121212; }
-  body.light-theme nav { background: rgba(255, 255, 240, 0.95); border-bottom: 1px solid #a100ff; }
-  body.light-theme nav a { color: #a100ff; }
+  body.light-theme nav { background: rgba(255, 253, 208,0.95); }
 </style>
 </head>
 <body>
@@ -111,14 +111,20 @@
     <div class="about-card">
       <h3>Early Exploration</h3>
       <p>Started coding in 5th grade, learning Unity and game development.</p>
+      <span class="see-more-about">See More ↓</span>
+      <p class="full">I experimented with different engines and game genres, building small games and learning the basics of programming logic, design, and problem-solving in a fun environment.</p>
     </div>
     <div class="about-card">
       <h3>High School Growth</h3>
       <p>Robotics, AP CS classes, and innovative projects fueled my curiosity.</p>
+      <span class="see-more-about">See More ↓</span>
+      <p class="full">Engaged in competitions, team projects, and self-driven learning in robotics and software development, enhancing my technical skills and collaboration experience.</p>
     </div>
     <div class="about-card">
       <h3>Creative Projects</h3>
       <p>Quadrupedal robots, drones, and procedural language generators.</p>
+      <span class="see-more-about">See More ↓</span>
+      <p class="full">I designed, programmed, and built several projects from scratch, integrating multiple disciplines such as mechanical design, electronics, and AI programming, highlighting my passion for applied technology.</p>
     </div>
   </div>
 </section>
@@ -244,22 +250,4 @@
       modalImg.src = card.querySelector('img').src;
       modalTitle.textContent = card.dataset.title;
       modalDesc.textContent = card.dataset.description;
-      modalTech.textContent = card.dataset.tech;
-      modalLink.href = card.dataset.links;
-      setTimeout(()=> modal.classList.add('show'), 10);
-    });
-  });
-
-  modalClose.addEventListener('click', () => {
-    modal.classList.remove('show');
-    setTimeout(()=> modalOverlay.style.display='none', 500);
-  });
-
-  // Hide typing cursor after animation
-  const tagline = document.querySelector('.tagline');
-  tagline.addEventListener('animationend', () => {
-    tagline.style.borderRight = 'none';
-  });
-</script>
-</body>
-</html>
+      modalTech.textContent = card.dataset.tech
