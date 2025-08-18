@@ -8,13 +8,13 @@
 <style>
   /* Reset & basic styles */
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
-  body { background-color: #121212; color: #f0f0f0; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+  body { background-color: #121212; color: #f0f0f0; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
   a { text-decoration: none; }
   h1,h2,h3 { margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
-  section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius:10px; margin-bottom:30px; }
+  section { padding: 60px 20px; max-width: 1000px; margin: auto; border-radius: 10px; margin-bottom: 30px; transition: background 0.3s, color 0.3s; }
 
   /* Navigation Bar */
-  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255);}
+  nav { position: fixed; top:0; width:100%; background: rgba(18,18,18,0.95); display:flex; justify-content:center; padding:10px 0; z-index:1000; border-bottom: 1px solid rgb(149,0,255); transition: background 0.3s; }
   nav a { margin: 0 15px; font-weight:bold; cursor:pointer; color: rgb(149,0,255); transition: transform 0.2s; }
   nav a:hover { transform: scale(1.1); }
 
@@ -28,238 +28,32 @@
 
   /* Skills Section */
   .skills { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-  .skill { background:#d6c6b8; padding:10px 15px; border-radius:8px; transition: background 0.3s, color 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
+  .skill { background:#F8F1E7; color:#121212; padding:10px 15px; border-radius:8px; transition: background 0.3s, color 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.3);}
   .skill:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
 
   /* Projects Section */
   #projects { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 20px; padding: 40px 20px; justify-content: center; scroll-padding: 50px; }
-  .project-card { min-width: 300px; flex: 0 0 auto; background:#d6c6b8; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
+  .project-card { min-width: 300px; flex: 0 0 auto; background:#F8F1E7; color:#121212; border-radius:10px; scroll-snap-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; cursor:pointer; }
   .project-card:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.5); }
   .project-card img { width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
   .project-card .card-content { padding:10px; }
   .project-card .see-more { margin-top:10px; display:block; color: rgb(149,0,255); text-align:right; cursor:pointer; font-weight:bold; }
+
+  /* Modal */
+  .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(2px); justify-content:center; align-items:center; z-index:1001; }
+  .modal { background:#1e1e1e; padding:20px; border-radius:10px; width:90%; max-width:600px; max-height:90%; overflow-y:auto; transform: scale(0.8); opacity:0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s; position:relative; }
+  .modal.show { transform: scale(1); opacity:1; }
+  .modal img { width:100%; border-radius:10px; margin-bottom:15px; }
+  .modal-close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; color: rgb(149,0,255); font-size:20px; }
+
+  /* About Section Cards */
+  .about-cards { display:flex; flex-direction:column; gap:20px; justify-content:center; }
+  .about-card { background:#F8F1E7; color:#121212; padding:20px; border-radius:10px; flex:1 1 250px; transition: transform 0.2s; }
+  .about-card:hover { transform: scale(1.05); }
+  .about-card .see-more { margin-top:10px; display:block; color: rgb(149,0,255); text-align:right; cursor:pointer; font-weight:bold; }
+
 </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-<nav>
-  <a href="#hero">Home</a>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- Hero Section -->
-<section id="hero">
-  <img src="https://miro.medium.com/v2/resize:fit:1400/1*KuGlXZjyTw7q38uzY_aZRA.png" alt="Profile Picture">
-  <h1>Jairus Randy Buque</h1>
-  <p>High School Senior | Aspiring CS & CE Student | Robotics & Programming Enthusiast</p>
-  <p class="tagline">Exploring the intersection of code, robotics, and creativity...</p>
-  <div class="hero-links">
-    <a href="https://github.com/duckun1corn" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a>
-    <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit" target="_blank">Resumé</a>
-  </div>
-</section>
-
-<!-- About Section -->
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about-cards">
-    <div class="about-card" data-full="Started coding in 5th grade, learning Unity and game development, creating small games and experimenting with mods.">
-      <h3>Early Exploration</h3>
-      <p>Started coding in 5th grade...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-    <div class="about-card" data-full="Robotics, AP CS classes, and innovative projects fueled my curiosity. I started leading small coding projects and exploring new programming languages.">
-      <h3>High School Growth</h3>
-      <p>Robotics, AP CS classes...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-    <div class="about-card" data-full="Quadrupedal robots, drones, and procedural language generators. I focus on creativity and pushing technology to solve real-world problems.">
-      <h3>Creative Projects</h3>
-      <p>Quadrupedal robots, drones...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-  </div>
-</section>
-<!-- Skills Section -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">C#</div>
-    <div class="skill">C++</div>
-    <div class="skill">Java</div>
-    <div class="skill">XAML</div>
-    <div class="skill">Unity</div>
-    <div class="skill">Arduino IDE</div>
-    <div class="skill">Visual Studio</div>
-    <div class="skill">Blender</div>
-    <div class="skill">Fusion360</div>
-    <div class="skill">Lightburn</div>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="project-card" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 1">
-    <div class="card-content">
-      <h3>Project 1</h3>
-      <p>Short summary of project 1...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-  </div>
-  <div class="project-card" data-title="Project 2" data-description="Full description of Project 2" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 2">
-    <div class="card-content">
-      <h3>Project 2</h3>
-      <p>Short summary of project 2...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-  </div>
-  <div class="project-card" data-title="Project 3" data-description="Full description of Project 3" data-tech="Blender, Fusion360" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 3">
-    <div class="card-content">
-      <h3>Project 3</h3>
-      <p>Short summary of project 3...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-  </div>
-  <div class="project-card" data-title="Project 4" data-description="Full description of Project 4" data-tech="Python, Arduino" data-links="https://github.com/placeholder">
-    <img src="https://via.placeholder.com/250x150" alt="Project 4">
-    <div class="card-content">
-      <h3>Project 4</h3>
-      <p>Short summary of project 4...</p>
-      <span class="see-more">See More ↓</span>
-    </div>
-  </div>
-</section>
-
-<!-- Modal Overlay -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
-    <span class="modal-close" id="modalClose">✖</span>
-    <img src="https://via.placeholder.com/600x300" id="modalImg" alt="Project Image">
-    <h3 id="modalTitle">Project Title</h3>
-    <p id="modalDesc">Full description here...</p>
-    <p><strong>Technologies:</strong> <span id="modalTech"></span></p>
-    <p><a href="#" id="modalLink" target="_blank">GitHub / Live Demo</a></p>
-  </div>
-</div>
-
-<!-- Experience Section -->
-<section id="experience">
-  <h2>Experience & Education</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>XPerience Internship</h3>
-      <span>June 2025 – July 2025</span>
-      <p>Helped run and advise summer STEM camps (Grades 1-8).</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Vernon Hills High School</h3>
-      <span>Aug 2022 – May 2026 | Weighted GPA: 4.574 | Unweighted GPA: 4.0</span>
-      <p>Courses: AP CS Principles, AP CS A, Data Structures, AP Calculus BC, Calculus III</p>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-  <h2>Contact Me</h2>
-  <form onsubmit="alert('This is a placeholder form.'); return false;">
-    <input type="text" placeholder="Name" id="contactName" required>
-    <input type="email" placeholder="Email" id="contactEmail" required>
-    <textarea placeholder="Message" id="contactMsg" rows="5" required></textarea>
-    <button type="submit">Send</button>
-  </form>
-  <div style="text-align:center; margin-top:20px;">
-    <p>📧 jrbuque07@gmail.com</p>
-    <p>🔗 <a href="https://github.com/duckun1corn" target="_blank">GitHub</a></p>
-    <p>🔗 <a href="https://www.linkedin.com/in/jairus-buque/" target="_blank">LinkedIn</a></p>
-    <p>📄 <a href="https://docs.google.com/document/d/1xSwNPGBOQ9cmKdN-E3OtXw089R07XorJYHmvmdAUBwg/edit" target="_blank">Resumé</a></p>
-  </div>
-</section>
-
-<!-- Theme Switcher -->
-<button id="themeToggle">🌙</button>
-
-<script>
-  // Theme toggle
-  const themeBtn = document.getElementById('themeToggle');
-  themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
-  });
-
-  // Smooth scrolling for nav links
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  // Modal functionality
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modalImg');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalTech = document.getElementById('modalTech');
-  const modalLink = document.getElementById('modalLink');
-  const modalClose = document.getElementById('modalClose');
-
-  document.querySelectorAll('.project-card .see-more').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const card = e.target.closest('.project-card');
-      modalOverlay.style.display = 'flex';
-      modalImg.src = card.querySelector('img').src;
-      modalTitle.textContent = card.dataset.title;
-      modalDesc.textContent = card.dataset.description;
-      modalTech.textContent = card.dataset.tech;
-      modalLink.href = card.dataset.links;
-      setTimeout(()=> modal.classList.add('show'), 10);
-    });
-  });
-
-  modalClose.addEventListener('click', () => {
-    modal.classList.remove('show');
-    setTimeout(()=> modalOverlay.style.display='none', 500);
-  });
-
-  // About Me "See More" functionality
-  document.querySelectorAll('.about-card').forEach(card => {
-    const fullText = card.querySelector('p').textContent;
-    card.dataset.fullText = fullText;
-    card.querySelector('p').textContent = fullText.length > 100 ? fullText.slice(0, 100) + '...' : fullText;
-
-    const seeMoreBtn = document.createElement('span');
-    seeMoreBtn.textContent = 'See More ↓';
-    seeMoreBtn.style.cursor = 'pointer';
-    seeMoreBtn.style.color = 'rgb(149,0,255)';
-    seeMoreBtn.style.display = 'block';
-    seeMoreBtn.style.marginTop = '10px';
-    card.appendChild(seeMoreBtn);
-
-    seeMoreBtn.addEventListener('click', () => {
-      if(card.querySelector('p').textContent.endsWith('...')){
-        card.querySelector('p').textContent = card.dataset.fullText;
-        seeMoreBtn.textContent = 'Show Less ↑';
-      } else {
-        card.querySelector('p').textContent = card.dataset.fullText.slice(0, 100) + '...';
-        seeMoreBtn.textContent = 'See More ↓';
-      }
-    });
-  });
-</script>
-</body>
-</html>
-
+  
