@@ -143,12 +143,11 @@
   </div>
 </section>
 
-<!-- Projects Section -->
 <section id="projects">
   <h2>Projects</h2>
-  <div id="projectsContainer" style="display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:20px; padding:0 50px; scroll-behavior: smooth;">
+  <div id="projectsContainer" style="display:flex; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; gap:20px; padding:0; scroll-behavior:smooth;">
 
-    <div class="project-card" style="margin-left:100px;" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
+    <div class="project-card" style="margin-left:50px;" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
       <img src="https://via.placeholder.com/250x150" alt="Project 1">
       <div class="card-content">
         <h3>Project 1</h3>
@@ -175,7 +174,7 @@
       </div>
     </div>
 
-    <div class="project-card" style="margin-right:100px;" data-title="Project 4" data-description="Full description of Project 4" data-tech="C#, Unity" data-links="https://github.com/placeholder">
+    <div class="project-card" data-title="Project 4" data-description="Full description of Project 4" data-tech="C#, Unity" data-links="https://github.com/placeholder">
       <img src="https://via.placeholder.com/250x150" alt="Project 4">
       <div class="card-content">
         <h3>Project 4</h3>
@@ -184,7 +183,7 @@
       </div>
     </div>
 
-    <div class="project-card" data-title="Project 5" data-description="Full description of Project 5" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
+    <div class="project-card" style="margin-right:50px;" data-title="Project 5" data-description="Full description of Project 5" data-tech="Arduino, C++" data-links="https://github.com/placeholder">
       <img src="https://via.placeholder.com/250x150" alt="Project 5">
       <div class="card-content">
         <h3>Project 5</h3>
@@ -212,18 +211,25 @@
   #projectsContainer::-webkit-scrollbar-thumb:hover {
     background: #a100ff;
   }
+
+  /* Firefox scrollbar */
+  #projectsContainer {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(149,0,255) #2b2b2b;
+  }
 </style>
 
 <script>
   // Center Project 2 on page load
   window.addEventListener('load', () => {
     const container = document.getElementById('projectsContainer');
-    const project2 = container.children[1]; // Project 2 is the second child
+    const project2 = container.children[1]; // Project 2
     const containerWidth = container.offsetWidth;
     const project2Offset = project2.offsetLeft + project2.offsetWidth/2;
     container.scrollLeft = project2Offset - containerWidth/2;
   });
 </script>
+
 
 
 
