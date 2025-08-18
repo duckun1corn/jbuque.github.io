@@ -146,6 +146,7 @@
 <!-- Projects Section -->
 <section id="projects">
   <h2>Projects</h2>
+  <div id="projectsContainer">
   <div class="projects-scroll-container">
     <div class="project-card" data-title="Project 1" data-description="Full description of Project 1" data-tech="C#, Unity" data-links="https://github.com/placeholder">
       <img src="https://via.placeholder.com/250x150" alt="Project 1">
@@ -195,27 +196,43 @@
 </section>
 
 <style>
-  /* Custom horizontal scrollbar for projects */
-  #projectsContainer::-webkit-scrollbar {
-    height: 12px;
-  }
-  #projectsContainer::-webkit-scrollbar-track {
-    background: #2b2b2b;
-    border-radius: 6px;
-  }
-  #projectsContainer::-webkit-scrollbar-thumb {
-    background: rgb(149,0,255);
-    border-radius: 6px;
-  }
-  #projectsContainer::-webkit-scrollbar-thumb:hover {
-    background: #a100ff;
-  }
+#projects {
+  padding: 40px 20px;
+  background: #1e1e1e;
+}
 
-  /* Firefox scrollbar */
-  #projectsContainer {
-    scrollbar-width: thin;
-    scrollbar-color: rgb(149,0,255) #2b2b2b;
-  }
+#projectsContainer {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 50px;
+  gap: 20px;
+  padding: 0 20px;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (optional) */
+#projectsContainer::-webkit-scrollbar {
+  height: 12px;
+}
+#projectsContainer::-webkit-scrollbar-track {
+  background: #2b2b2b;
+  border-radius: 6px;
+}
+#projectsContainer::-webkit-scrollbar-thumb {
+  background: rgb(149,0,255);
+  border-radius: 6px;
+}
+#projectsContainer::-webkit-scrollbar-thumb:hover {
+  background: #a100ff;
+}
+
+/* Firefox scrollbar */
+#projectsContainer {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(149,0,255) #2b2b2b;
+}
 </style>
 
 <script>
